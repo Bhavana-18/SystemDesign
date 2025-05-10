@@ -1,4 +1,13 @@
-package PACKAGE_NAME;
+public class PhoneDisplay implements  Observer{
+    String weather;
 
-public class PhoneDisplay {
+    @Override
+    public void update(String weather){
+        this.weather = weather;
+        display();
+    }
+
+    public void display(){
+        System.out.println("Phone Display weather :" + weather);
+    }
 }

@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
+public enum SeatCategory {
+    GOLD,
+    SILVER,
+    PLATINUM;
 
-public class SeatCategory {
 }
