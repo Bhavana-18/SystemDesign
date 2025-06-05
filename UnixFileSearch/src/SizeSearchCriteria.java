@@ -1,4 +1,13 @@
-package PACKAGE_NAME;
+public class SizeSearchCriteria implements  SearchCriteria {
 
-public class SizeSearchCriteria {
+    Long minSize;
+
+    public SizeSearchCriteria(Long minSize){
+        this.minSize = minSize;
+    }
+
+    @Override
+    public boolean matches(File file){
+        return file.getSize()>= minSize;
+    }
 }

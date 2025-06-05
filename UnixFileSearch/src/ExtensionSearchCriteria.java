@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class ExtensionSearchCriteria implements SearchCriteria {
 
-public class ExtensionSearchCriteria {
+    String extension;
+    ExtensionSearchCriteria (String extension){
+        this.extension = extension;
+    }
+
+    @Override
+    public boolean matches(File file){
+        return file.getExtension().equals(extension);
+    }
 }

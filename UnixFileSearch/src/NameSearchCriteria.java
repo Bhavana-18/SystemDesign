@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class NameSearchCriteria implements  SearchCriteria {
+    String name;
 
-public class NameSearchCriteria {
+    NameSearchCriteria (String name){
+        this.name = name;
+    }
+
+    @Override
+    public boolean matches(File file){
+        return file.getName().equals(name);
+    }
 }
