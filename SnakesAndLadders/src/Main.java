@@ -7,7 +7,7 @@ public class Main {
         List<String> players = new ArrayList<>();
         players.add("Manvitha");
         players.add("Bhavana");
-        players.add("Shreya");
+        players.add("Smily");
         players.add("Priya");
 
         SnakesAndLadderGame game = new SnakesAndLadderGame(players);

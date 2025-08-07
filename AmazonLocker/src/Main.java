@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,9 @@ public class Main {
 
         PackageManager packageManager = new PackageManager(lockerManager,notificationService);
         User user1 = new User("124", "Bhavana", "999999999", "Hyd");
-        Package pkg = new Package(1, Size.SMALL,user1 );
+        Package pkg = new Package(1, Size.SMALL,user1 ,  LocalDateTime.now());
         packageManager.dropPackage(pkg);
         packageManager.pickupPackage(pkg,"123");
+        
     }
 }

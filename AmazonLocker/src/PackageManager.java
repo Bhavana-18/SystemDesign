@@ -17,12 +17,14 @@ public class PackageManager {
     public boolean pickupPackage(Package pkg, String otp){
 
         if(pkg.getOtp().equals(otp)){
-            Locker locker = pkg.getLocker();
-           lockerManager.releaseLocker(locker);
-           pkg.setPackageStatus(PackageStatus.PICKED_UP);
-           System.out.println("Picked up");
-           return true;
-
+            for(Locker locker : lockerManager.lockerList){
+                if(locker.getCurrentPkg() == pkg){
+                    lockerManager.releaseLocker(locker);
+                    pkg.setPackageStatus(PackageStatus.PICKED_UP);
+                    System.out.println("Picked up");
+                    return true;
+                }
+            }
         }
      return  false;
     }

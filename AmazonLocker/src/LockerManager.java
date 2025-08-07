@@ -26,7 +26,7 @@ public class LockerManager {
        for(Locker locker: lockerList){
            if(pkg.getPackageSize() == locker.getLockerSize() && locker.getStatus() == LockerStatus.AVAILABLE){
                locker.setStatus(LockerStatus.OCCUPIED);
-               pkg.setLocker(locker);
+               locker.setCurrentPkg(pkg);
                pkg.setOtp(generateOtp());
                return;
            }
@@ -36,6 +36,7 @@ public class LockerManager {
 
     public void releaseLocker(Locker locker) {
         locker.setStatus(LockerStatus.AVAILABLE);
+        locker.setCurrentPkg(null);
     }
 
     private  String generateOtp(){

@@ -1,15 +1,19 @@
+import java.time.LocalDateTime;
+
 public class Package {
     int packageId;
     Size packageSize;
     User user;
-    Locker locker;
+    LocalDateTime droppedTime;
     PackageStatus packageStatus;
     String otp;
+    boolean isExpired;
 
-    Package(int packageId, Size packageSize, User user){
+    Package(int packageId, Size packageSize, User user, LocalDateTime droppedTime){
         this.packageId = packageId;
         this.packageSize = packageSize;
         this.user = user;
+        this.droppedTime = droppedTime;
     }
 
     public void setOtp(String otp) {
@@ -28,9 +32,7 @@ public class Package {
         return packageSize;
     }
 
-    public void setLocker(Locker locker) {
-        this.locker = locker;
-    }
+
 
     public User getUser() {
         return user;
@@ -40,7 +42,15 @@ public class Package {
         return packageId;
     }
 
-    public Locker getLocker() {
-        return locker;
+
+
+    public boolean isExpired() {
+        return isExpired;
     }
+
+    public void setExpired(boolean expired) {
+        isExpired = expired;
+    }
+
+
 }
