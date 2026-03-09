@@ -3,12 +3,14 @@ public class Seat {
     private  int row;
     private final SeatCategory seatCategory;
     private SeatStatus seatStatus;
+    private boolean isBooked;
 
     Seat(int seatNo,  SeatCategory seatCategory){
         this.seatCategory = seatCategory;
         this.seatNo = seatNo;
 //        this.row = row;
         this.seatStatus = SeatStatus.AVAILABLE;
+        isBooked = false;
 
     }
 

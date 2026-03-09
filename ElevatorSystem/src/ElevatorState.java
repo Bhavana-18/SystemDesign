@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
-public class ElevatorState {
+public enum ElevatorState {
+    IDLE, MOVING, DOOR_OPEN, MAINTENANCE;
 }

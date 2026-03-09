@@ -1,2 +1,4 @@
-public class Payment {
+public interface Payment {
+    processPayment(double amount);
+    
 }

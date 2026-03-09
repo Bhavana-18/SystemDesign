@@ -2,14 +2,11 @@
 public class ParkingSpot {
 
     protected  Vehicle vehicle;
-    VehicleType vehicleType;
+    private final VehicleType vehicleType;
     protected final int id;
-    Position position;
-//    protected boolean isEmpty;
+    private final Position position;
 
-
-
-    ParkingSpot(VehicleType vehicleType, int id, Position position){
+    public ParkingSpot(VehicleType vehicleType, int id, Position position){
         this.vehicleType = vehicleType;
         this.id = id;
         this.position = position;
@@ -34,7 +31,7 @@ public class ParkingSpot {
             throw new IllegalArgumentException("Invalid vehicle type or spot already occupied.");
         }
     }
-    public void removeVehicle(){
+    public synchronized void removeVehicle(){
         this.vehicle = null;
     }
 

@@ -40,6 +40,8 @@ interface VendingMachineState {
 
 // Vending Machine Context
 class VendingMachineContext {
+    private  static volatile VendingMachineContext instance = null;
+
     private VendingMachineState currentState;
     private final InventoryManager inventoryManager = new InventoryManager();
     private Product selectedProduct;
@@ -47,6 +49,16 @@ class VendingMachineContext {
 
     public void setState(VendingMachineState state) {
         this.currentState = state;
+    }
+
+    public static VendingMachineContext getInstance(){
+        if(instance == null){
+            synchronized (VendingMachineContext.class) {
+                if(instance == null)
+                instance = new VendingMachineContext();
+            }
+        }
+        return instance;
     }
 
     public void start() {
@@ -126,7 +138,7 @@ class DoneState implements VendingMachineState {
 // Main Demo
 public class VendingMachineDemo {
     public static void main(String[] args) {
-        VendingMachineContext machine = new VendingMachineContext();
+        VendingMachineContext machine = VendingMachineContext.getInstance();
         Product chips = new Product("1", "Chips", 10.0);
 
         machine.getInventoryManager().addProduct(chips);

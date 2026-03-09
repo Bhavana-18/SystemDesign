@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
-public class Request {
+interface  Request{
+    int getFloor();
 }

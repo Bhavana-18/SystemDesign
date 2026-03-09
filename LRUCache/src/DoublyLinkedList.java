@@ -1,4 +1,38 @@
-package PACKAGE_NAME;
+public class DoublyLinkedList<K,V> {
+    private final Node<K, V> head;
+    private final Node<K, V> tail;
 
-public class DoublyLinkedList {
+    DoublyLinkedList() {
+        head = new Node<>(null, null);
+        tail = new Node<>(null, null);
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    void addToHead(Node<K, V> node) {
+        node.next = head.next;
+        node.prev = head;
+
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    void moveToHead(Node<K, V> node) {
+        remove(node);
+        addToHead(node);
+    }
+
+    void remove(Node<K, V> node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    Node<K, V> removeTail() {
+        if (tail.prev == head) {
+            return null;
+        }
+        Node<K, V> lru = tail.prev;
+        remove(lru);
+        return lru;
+    }
 }

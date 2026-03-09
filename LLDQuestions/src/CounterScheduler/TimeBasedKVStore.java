@@ -59,7 +59,7 @@ public class TimeBasedKVStore {
             return result;
         } finally {
             lock.readLock().unlock();
-        },
+        }
     }
 
     private void startCleanupScheduler() {

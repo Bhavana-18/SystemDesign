@@ -3,7 +3,7 @@ public class Gate {
     private final String name;
     private final Position position;
 
-    Gate(int id, String name, Position position){
+    public Gate(int id, String name, Position position){
         this.id = id;
         this.name = name;
         this.position = position;

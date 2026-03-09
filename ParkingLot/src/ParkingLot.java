@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -9,14 +10,17 @@ public class ParkingLot {
     }
 
     public ParkingSpot findNearestParkingSpotAvailable(Vehicle vehicle , Position gatePosition){
+     List<ParkingSpot> parkingSpotList = getCandidateSpotsSortedByDistance(vehicle,gatePosition);
+     for(ParkingSpot parkingSpot : parkingSpotList){
+         if(parkingSpot.reserve(vehicle))
+             return parkingSpot;
 
-        return parkingSpots.stream().filter(spot -> spot.isAvailable() && spot.vehicleType == vehicle.getVehicleType())
-                .min(Comparator.comparingDouble(spot -> spot.getPosition().distanceTo(gatePosition)))
-                .orElseThrow(() -> new RuntimeException("No available spot"));
+     }
+
 
     }
 
-    void removeVehicle(int spotId){
+   public void removeVehicle(int spotId){
         for(ParkingSpot parkingSpot :parkingSpots){
             if(parkingSpot.getId() == spotId){
                 parkingSpot.removeVehicle();
@@ -25,7 +29,7 @@ public class ParkingLot {
         }
     }
 
-    void printAvailableParkingSpots(){
+   public void printAvailableParkingSpots(){
         System.out.println("Available parking spots:");
         for(ParkingSpot parkingSpot : parkingSpots){
             if(parkingSpot.isAvailable()){
@@ -33,6 +37,13 @@ public class ParkingLot {
 
             }
         }
+
+    }
+    public List<ParkingSpot> getCandidateSpotsSortedByDistance(Vehicle vehicle, Position  position){
+        return parkingSpots.stream()
+                .filter(spot -> spot.isAvailable() && spot.vehicleType == vehicle.getVehicleType())
+                .sorted(Comparator.comparingDouble(spot -> spot.getPosition().distanceTo(position)))
+                .toList();
 
     }
 

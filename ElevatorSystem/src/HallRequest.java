@@ -1,4 +1,17 @@
-package PACKAGE_NAME;
+public class HallRequest implements  Request{
+    private final int floor;
+    private final Direction direction;
 
-public class HallRequest {
+    public HallRequest(int floor, Direction direction) {
+        this.floor = floor;
+        this.direction = direction;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
 }

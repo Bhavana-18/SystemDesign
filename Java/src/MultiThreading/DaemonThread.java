@@ -1,6 +1,4 @@
-package MultiThreading.ProducerConsumerSol;
-
-import MultiThreading.SharedResources;
+package MultiThreading;
 
 public class DaemonThread {
 
