@@ -1,3 +1,0 @@
-interface  Request{
-    int getFloor();
-}

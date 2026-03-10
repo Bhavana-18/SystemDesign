@@ -1,4 +1,7 @@
-public class HallRequest implements  Request{
+package Entity;
+import Enum.Direction;
+
+public class HallRequest implements Request {
     private final int floor;
     private final Direction direction;
 
